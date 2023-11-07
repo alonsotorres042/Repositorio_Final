@@ -1,0 +1,67 @@
+{
+    "name": "PlayerActions",
+    "maps": [
+        {
+            "name": "GP",
+            "id": "e59bf53f-357e-44f9-bd0d-6ecb85c62b5f",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "168cf954-4969-4bf6-847b-e0d10e3f22e5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "034d31f4-045a-4947-94b8-af50d4228197",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "b07c1240-a669-4e86-ad0d-a36828ee40bd",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "17020845-1b6f-4c35-a1b8-58daac90355b",
+                    "path": "S",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "9361b356-2d4a-4954-a816-c59fb3ab2479",
+                    "path": "W",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
