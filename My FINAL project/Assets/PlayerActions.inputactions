@@ -2,61 +2,72 @@
     "name": "PlayerActions",
     "maps": [
         {
-            "name": "GP",
-            "id": "e59bf53f-357e-44f9-bd0d-6ecb85c62b5f",
+            "name": "PlayerControls",
+            "id": "18375521-bb68-4a1e-8a0d-ad345a797e09",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "168cf954-4969-4bf6-847b-e0d10e3f22e5",
-                    "expectedControlType": "Button",
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "5dafc8ad-4254-4ac9-a568-7d6c410477b7",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "034d31f4-045a-4947-94b8-af50d4228197",
-                    "path": "",
+                    "name": "WASD",
+                    "id": "18d3b19b-ec5b-4cda-a385-1aac1895d129",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "b07c1240-a669-4e86-ad0d-a36828ee40bd",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "17020845-1b6f-4c35-a1b8-58daac90355b",
-                    "path": "S",
+                    "name": "up",
+                    "id": "1c040aac-0466-46e0-9121-4f1c4651d351",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
-                    "id": "9361b356-2d4a-4954-a816-c59fb3ab2479",
-                    "path": "W",
+                    "name": "down",
+                    "id": "1c8b5da4-d6a9-45fc-a7eb-39b9f53dd905",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "1de5d99c-6452-43e3-867a-e8090927f554",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "810452f1-c4bc-46a1-986b-9e6332f47ebe",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

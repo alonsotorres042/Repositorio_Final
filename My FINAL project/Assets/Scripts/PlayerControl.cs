@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
     {
 
     }
-    void FixedUpdate()
+    void OnMovement()
     {
 
     }
