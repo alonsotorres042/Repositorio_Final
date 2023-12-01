@@ -516,6 +516,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 76e7cc4c-a022-4432-ba0a-926237f2c07a
     m_ActionName: PlayerControls/Movement2[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 756424407}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6dfea372-b72c-4451-858e-9c871f4eaaae
+    m_ActionName: PlayerControls/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
@@ -533,9 +549,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ad88736c6109b49a4d7b43749f5b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: {x: 0, y: 0, z: 0}
-  Mspeed: 0
-  _counter: 0
+  AvailableJumps: 0
+  VectorSpeed: {x: 0, y: 0, z: 0}
+  _transform: {fileID: 0}
+  _myRB: {fileID: 0}
+  CircularSpeed: 0
+  SpeedValue: 0
+  Thrust: 0
+  Width: 0
+  Depth: 0
 --- !u!1 &990526673
 GameObject:
   m_ObjectHideFlags: 0
