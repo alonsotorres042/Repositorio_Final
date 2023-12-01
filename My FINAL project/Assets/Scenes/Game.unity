@@ -500,6 +500,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5dafc8ad-4254-4ac9-a568-7d6c410477b7
     m_ActionName: PlayerControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 756424407}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnCircularMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 76e7cc4c-a022-4432-ba0a-926237f2c07a
+    m_ActionName: PlayerControls/Movement2[/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
@@ -517,6 +533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ad88736c6109b49a4d7b43749f5b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: {x: 0, y: 0, z: 0}
+  Mspeed: 0
+  _counter: 0
 --- !u!1 &990526673
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,13 +621,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990526673}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.09866206, y: 0.88552076, z: -0.23652026, w: 0.3875269}
+  m_LocalPosition: {x: -9.58, y: 6.09, z: 9.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.693, y: 132.579, z: -0.566}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
