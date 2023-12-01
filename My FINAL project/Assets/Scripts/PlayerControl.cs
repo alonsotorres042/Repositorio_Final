@@ -8,7 +8,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-    public int AvailableJumps = 0;
+    RaycastHit hit;
+    public float RaycastLenght = 0.47f;
+    public LayerMask Layer;
+    public int ExtraAvailableJumps = 0;
     private bool _canJump;
     public Vector3 VectorSpeed;
     public Transform _transform;
@@ -36,17 +39,27 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //_myRB.velocity = VectorSpeed;        <------   LIBERAR EN CASO DE QUERER MOVIMIENTO X & Z NORMALES.
+        //_myRB.velocity = VectorSpeed;      <------   LIBERAR EN CASO DE QUERER MOVIMIENTO X & Z NORMALES.
         _counter += Time.deltaTime * CircularSpeed;
         float x = Mathf.Cos(_counter) * Width;
         float z = Mathf.Sin(_counter) * Depth;
 
         _transform.position = new Vector3(x, _transform.position.y, z);
     }
-    private void OnCollisionEnter(Collision other)
-    {
-        //NO OLVIDAR: Colocar un if para comparar los tags¡¡ NO OLVIDAR
-        _canJump = true;
+    void FixedUpdate()
+    {        
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, RaycastLenght, Layer))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.yellow);
+            ExtraAvailableJumps = 1;
+            _canJump = true;
+            Debug.Log("Did Hit");
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.white);
+            Debug.Log("Did not Hit");
+        }
     }
     public void OnMovement(InputAction.CallbackContext context) 
     {
@@ -67,13 +80,17 @@ public class PlayerControl : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        //Vector3 jumpInput = context.ReadValue<Vector3>();
         if(context.performed)
         {
-            if(_canJump == true)
+            if(_canJump == true && ExtraAvailableJumps != 0)
             {
                 _myRB.AddForce(_transform.up * Thrust);
+                ExtraAvailableJumps--;
             }
         }
+    }
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        Debug.Log("Aca va algo. NO OLVIDAR");
     }
 }
