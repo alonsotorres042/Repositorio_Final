@@ -9,10 +9,11 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     RaycastHit hit;
+    public bool CanJump;
     public float RaycastLenght = 0.47f;
     public LayerMask Layer;
+    public int MaxExtraJumps = 1;
     public int ExtraAvailableJumps = 0;
-    private bool _canJump;
     public Vector3 VectorSpeed;
     public Transform _transform;
     public Rigidbody _myRB;
@@ -25,7 +26,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _canJump = true;
+        CanJump = true;
         Thrust = 300f;
         Width = 10;
         Depth = 10;
@@ -51,20 +52,16 @@ public class PlayerControl : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, RaycastLenght, Layer))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.yellow);
-            ExtraAvailableJumps = 1;
-            _canJump = true;
+            ExtraAvailableJumps = MaxExtraJumps;
+            CanJump = true;
             Debug.Log("Did Hit");
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.white);
             Debug.Log("Did not Hit");
+            CanJump = false;
         }
-    }
-    public void OnMovement(InputAction.CallbackContext context) 
-    {
-        Vector3 moveInput = context.ReadValue<Vector3>();
-        VectorSpeed = moveInput * CircularSpeed;
     }
     public void OnCircularMovement(InputAction.CallbackContext context)
     {
@@ -82,7 +79,7 @@ public class PlayerControl : MonoBehaviour
     {
         if(context.performed)
         {
-            if(_canJump == true && ExtraAvailableJumps != 0)
+            if(CanJump == true || ExtraAvailableJumps != 0)
             {
                 _myRB.AddForce(_transform.up * Thrust);
                 ExtraAvailableJumps--;
