@@ -14,7 +14,6 @@ public class PlayerControl : MonoBehaviour
     public LayerMask Layer;
     public int MaxExtraJumps = 1;
     public int ExtraAvailableJumps = 0;
-    public Vector3 VectorSpeed;
     public Transform _transform;
     public Rigidbody _myRB;
     public float CircularSpeed;
@@ -46,6 +45,11 @@ public class PlayerControl : MonoBehaviour
         float z = Mathf.Sin(_counter) * Depth;
 
         _transform.position = new Vector3(x, _transform.position.y, z);
+
+        if (ExtraAvailableJumps == 0)
+        {
+            CanJump = false;
+        }
     }
     void FixedUpdate()
     {        
@@ -54,13 +58,10 @@ public class PlayerControl : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.yellow);
             ExtraAvailableJumps = MaxExtraJumps;
             CanJump = true;
-            Debug.Log("Did Hit");
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.white);
-            Debug.Log("Did not Hit");
-            CanJump = false;
         }
     }
     public void OnCircularMovement(InputAction.CallbackContext context)
@@ -78,8 +79,8 @@ public class PlayerControl : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if(context.performed)
-        {
-            if(CanJump == true || ExtraAvailableJumps != 0)
+        {   
+            if (CanJump == true && ExtraAvailableJumps != 0)
             {
                 _myRB.AddForce(_transform.up * Thrust);
                 ExtraAvailableJumps--;
