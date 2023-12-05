@@ -6,15 +6,6 @@
             "id": "18375521-bb68-4a1e-8a0d-ad345a797e09",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "Value",
-                    "id": "5dafc8ad-4254-4ac9-a568-7d6c410477b7",
-                    "expectedControlType": "Vector3",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "CircularMovement",
                     "type": "Value",
                     "id": "76e7cc4c-a022-4432-ba0a-926237f2c07a",
@@ -40,64 +31,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "18c22651-90df-4aa5-9efb-3bc929d98676",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "WASD",
-                    "id": "18d3b19b-ec5b-4cda-a385-1aac1895d129",
-                    "path": "3DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Left",
-                    "id": "1de5d99c-6452-43e3-867a-e8090927f554",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Right",
-                    "id": "810452f1-c4bc-46a1-986b-9e6332f47ebe",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Forward",
-                    "id": "0b3b3be9-af3b-4c55-9390-d07c5d7b581f",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Backward",
-                    "id": "23fb4a09-7d8c-4455-8d3a-7040ea0a1f2e",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "Left/Right",
                     "id": "0712c87e-7e3e-498c-9a37-ef2f69a7a362",
@@ -139,6 +84,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b52bd8d0-6a17-4f4f-ab93-48118c579234",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

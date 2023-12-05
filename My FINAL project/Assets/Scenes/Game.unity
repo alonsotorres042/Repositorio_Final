@@ -148,8 +148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207973145}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.032995045, y: -0, z: -0, w: 0.9994555}
-  m_LocalPosition: {x: 0, y: 3.1, z: -46.9}
+  m_LocalRotation: {x: -0.051520724, y: -0, z: -0, w: 0.99867195}
+  m_LocalPosition: {x: -0.0000008735806, y: 6.0194516, z: -46.20949}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 1992283690}
   m_Follow: {fileID: 1992283690}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 53.1
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -388,8 +388,8 @@ Transform:
   m_GameObject: {fileID: 706325292}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08187139, y: -10.99, z: -0.2300421}
-  m_LocalScale: {x: 20.617, y: 20.617, z: 20.617}
+  m_LocalPosition: {x: 0.081872, y: -10.99, z: -0.23004}
+  m_LocalScale: {x: 72.18424, y: 20.617, z: 66.92484}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -636,6 +636,7 @@ MonoBehaviour:
   Thrust: 0
   Width: 0
   Depth: 0
+  PositionTestObject: {fileID: 0}
 --- !u!1 &990526673
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +697,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 53.1
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -722,8 +723,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990526673}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.032995045, y: 0, z: 0, w: 0.9994555}
-  m_LocalPosition: {x: 0, y: 0.43, z: -4.69}
+  m_LocalRotation: {x: -0.11800516, y: -0.69719064, z: -0.11800516, w: 0.69719064}
+  m_LocalPosition: {x: 14.635429, y: -0.5244634, z: -0.00000008735806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -951,7 +952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0, y: 0, z: 0}
+  ShoulderOffset: {x: 0, y: 0.3, z: 0}
   VerticalArmLength: 0.31
   CameraSide: 1
   CameraDistance: 4.69
@@ -986,18 +987,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 1
-  m_LookaheadSmoothing: 3
-  m_LookaheadIgnoreY: 0
+  m_TrackedObjectOffset: {x: 0, y: 1.08, z: 0}
+  m_LookaheadTime: 0.3
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 1
   m_HorizontalDamping: 0.5
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
+  m_DeadZoneWidth: 0.12
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.6266254
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.29170525
+  m_SoftZoneHeight: 0.5
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -1103,7 +1104,7 @@ Transform:
   m_GameObject: {fileID: 1770318566}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.23, z: 0}
+  m_LocalPosition: {x: 0, y: 2.318506, z: 0}
   m_LocalScale: {x: 6, y: 2.58996, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1175,10 +1176,11 @@ MonoBehaviour:
     m_Bits: 55
   MaxExtraJumps: 1
   VisionTarget: {fileID: 1770318570}
-  SpeedValue: 0
-  Thrust: 0
-  Width: 0
-  Depth: 0
+  SpeedValue: 1
+  Thrust: 200
+  Width: 10
+  Depth: 10
+  PositionTestObject: {fileID: 8004434117119751086, guid: 37333ae431d19e448b2393af7e3699f7, type: 3}
 --- !u!114 &1992283687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,10 +1206,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5dafc8ad-4254-4ac9-a568-7d6c410477b7
-    m_ActionName: PlayerControls/Movement[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1992283686}
@@ -1256,6 +1254,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0e855683-8698-41ef-b9e8-b79da9d7031a
     m_ActionName: PlayerControls/Fire
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1992283686}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 18c22651-90df-4aa5-9efb-3bc929d98676
+    m_ActionName: PlayerControls/MousePos[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
@@ -1348,14 +1362,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992283685}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12, z: 0}
+  m_LocalRotation: {x: -0.08192868, y: -0.7023444, z: -0.08192868, w: 0.7023444}
+  m_LocalPosition: {x: 10, y: -0.04664936, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 207973146}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.307, y: -90, z: 0}
 --- !u!65 &1992283691
 BoxCollider:
   m_ObjectHideFlags: 0

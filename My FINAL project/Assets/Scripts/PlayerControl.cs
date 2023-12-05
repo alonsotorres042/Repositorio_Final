@@ -22,15 +22,15 @@ public class PlayerControl : MonoBehaviour
     public float Thrust;
     public float Width;
     public float Depth;
+    private Vector3 _aimDirection;
+
+    public GameObject PositionTestObject;
     // Start is called before the first frame update
     void Start()
     {
         CanJump = true;
         Thrust = 300f;
-        Width = 9;
-        Depth = 9;
         _counter = 0;
-        SpeedValue = 1;
         CircularSpeed = 0;
         _myRB = GetComponent<Rigidbody>();
         _transform = GetComponent<Transform>();
@@ -44,14 +44,11 @@ public class PlayerControl : MonoBehaviour
         float z = Mathf.Sin(_counter) * Depth;
 
         _transform.position = new Vector3(x, _transform.position.y, z);
-
-
-
     }
     void FixedUpdate()
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 100, Color.blue);
         _transform.LookAt(VisionTarget);
+        Debug.DrawRay(transform.position, _aimDirection * 100, Color.red);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, RaycastLenght, Layer))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.yellow);
@@ -96,6 +93,13 @@ public class PlayerControl : MonoBehaviour
     }
     public void OnFire(InputAction.CallbackContext context)
     {
-        Debug.Log("Just fired!");
+        Vector2 MousePos = context.ReadValue<Vector2>();
+        //Debug.Log("Screen " + MousePos);
+
+        Vector3 MouseWorldPos = Camera.main.ScreenToWorldPoint(MousePos);
+        MouseWorldPos.Normalize();
+        _aimDirection = MouseWorldPos;
+        Debug.Log("WORLD: " + MouseWorldPos);
+        //Instantiate(PositionTestObject, MouseWorldPos, Quaternion.identity);
     }
 }
