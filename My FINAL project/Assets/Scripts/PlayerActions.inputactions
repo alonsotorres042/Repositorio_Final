@@ -24,19 +24,19 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fire",
+                    "name": "MousePos",
                     "type": "Value",
-                    "id": "0e855683-8698-41ef-b9e8-b79da9d7031a",
-                    "expectedControlType": "Vector3",
+                    "id": "18c22651-90df-4aa5-9efb-3bc929d98676",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MousePos",
-                    "type": "Value",
-                    "id": "18c22651-90df-4aa5-9efb-3bc929d98676",
-                    "expectedControlType": "Vector2",
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "0e855683-8698-41ef-b9e8-b79da9d7031a",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -95,6 +95,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2ec43a4-b6b2-4e9a-b3ac-5f4632c6a84d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -25,9 +25,14 @@ public class PlayerControl : MonoBehaviour
 
 
     private Ray MyRay;
+    private bool _canShot;
     private Vector3 MouseOnWorld;
-    public Vector3 AimDirection;
-    public GameObject PositionTestObject;
+    private Vector3 _aimDirection;
+    public Vector3 AimDirection{get{return _aimDirection;}private set{}} 
+    public GameObject Bullet;
+    public GameObject GraphicMouseOnWorld;
+    public Transform ProjectileSpawner;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -47,15 +52,15 @@ public class PlayerControl : MonoBehaviour
         float z = Mathf.Sin(_counter) * Depth;
 
         _transform.position = new Vector3(x, _transform.position.y, z);
+        _transform.LookAt(VisionTarget);
     }
     void FixedUpdate()
     {
-        _transform.LookAt(VisionTarget);
-        AimDirection = transform.position - PositionTestObject.transform.position;
+        _aimDirection = transform.position - GraphicMouseOnWorld.transform.position;
         if(Physics.Raycast(MyRay, out hit))
         {
-            Debug.DrawRay(transform.position, new Vector3(AimDirection.x, AimDirection.y, AimDirection.z) * -1, Color.red);
-            PositionTestObject.transform.position = MouseOnWorld;
+            Debug.DrawRay(transform.position, _aimDirection * - 1, Color.red);
+            GraphicMouseOnWorld.transform.position = MouseOnWorld;
             MouseOnWorld = hit.point;
         }
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, RaycastLenght, Layer))
@@ -71,6 +76,13 @@ public class PlayerControl : MonoBehaviour
             {
                 CanJump = false;
             }
+        }
+    }
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "Sight")
+        {
+            Debug.Log("FRIENDLY FIRE!!!");
         }
     }
     public void OnCircularMovement(InputAction.CallbackContext context)
@@ -100,9 +112,16 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
-    public void OnFire(InputAction.CallbackContext context)
+    public void MousePos(InputAction.CallbackContext context)
     {
         Vector2 MousePos = context.ReadValue<Vector2>();
         MyRay = Camera.main.ScreenPointToRay(MousePos);
+    }
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
+        }
     }
 }
