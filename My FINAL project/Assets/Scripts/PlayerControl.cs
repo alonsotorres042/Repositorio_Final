@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-    RaycastHit hit;
+    public RaycastHit hit;
     private bool CanJump;
     public float RaycastLenght = 0.47f;
     public LayerMask Layer;
@@ -22,8 +22,11 @@ public class PlayerControl : MonoBehaviour
     public float Thrust;
     public float Width;
     public float Depth;
-    private Vector3 _aimDirection;
 
+
+    private Ray MyRay;
+    private Vector3 MouseOnWorld;
+    public Vector3 AimDirection;
     public GameObject PositionTestObject;
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,13 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         _transform.LookAt(VisionTarget);
-        Debug.DrawRay(transform.position, _aimDirection * 100, Color.red);
+        AimDirection = transform.position - PositionTestObject.transform.position;
+        if(Physics.Raycast(MyRay, out hit))
+        {
+            Debug.DrawRay(transform.position, new Vector3(AimDirection.x, AimDirection.y, AimDirection.z) * -1, Color.red);
+            PositionTestObject.transform.position = MouseOnWorld;
+            MouseOnWorld = hit.point;
+        }
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, RaycastLenght, Layer))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.yellow);
@@ -94,12 +103,6 @@ public class PlayerControl : MonoBehaviour
     public void OnFire(InputAction.CallbackContext context)
     {
         Vector2 MousePos = context.ReadValue<Vector2>();
-        //Debug.Log("Screen " + MousePos);
-
-        Vector3 MouseWorldPos = Camera.main.ScreenToWorldPoint(MousePos);
-        MouseWorldPos.Normalize();
-        _aimDirection = MouseWorldPos;
-        Debug.Log("WORLD: " + MouseWorldPos);
-        //Instantiate(PositionTestObject, MouseWorldPos, Quaternion.identity);
+        MyRay = Camera.main.ScreenPointToRay(MousePos);
     }
 }
