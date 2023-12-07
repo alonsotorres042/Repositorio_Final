@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
+    float x;
+    float z;
     public RaycastHit hit;
     private bool CanJump;
     public float RaycastLenght = 0.47f;
@@ -32,7 +34,10 @@ public class PlayerControl : MonoBehaviour
     public GameObject Bullet;
     public GameObject GraphicMouseOnWorld;
     public Transform ProjectileSpawner;
-    
+
+
+    public Vector3 MousePosit3D;
+    public Vector3 RayHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +53,8 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         _counter += Time.deltaTime * CircularSpeed;
-        float x = Mathf.Cos(_counter) * Width;
-        float z = Mathf.Sin(_counter) * Depth;
+        x = Mathf.Cos(_counter) * Width;
+        z = Mathf.Sin(_counter) * Depth;
 
         _transform.position = new Vector3(x, _transform.position.y, z);
         _transform.LookAt(VisionTarget);
@@ -76,13 +81,6 @@ public class PlayerControl : MonoBehaviour
             {
                 CanJump = false;
             }
-        }
-    }
-    public void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.name == "Sight")
-        {
-            Debug.Log("FRIENDLY FIRE!!!");
         }
     }
     public void OnCircularMovement(InputAction.CallbackContext context)

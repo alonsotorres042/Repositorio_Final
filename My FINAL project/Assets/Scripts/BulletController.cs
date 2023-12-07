@@ -6,13 +6,17 @@ public class BulletController : MonoBehaviour
 {
     public float Speed;
     private Vector3 _velocity;
-    public PlayerControl AimPosition;
+    public GameObject Sight;
     void Start()
     {
-        _velocity = AimPosition.AimDirection.normalized * - 1;
+        _velocity = transform.position - Sight.transform.position;
     }
     void Update()
     {
         transform.position = transform.position + _velocity * Speed;
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        Destroy(gameObject);
     }
 }
