@@ -1346,7 +1346,7 @@ MonoBehaviour:
   Thrust: 200
   Width: 20
   Depth: 20
-  Bullet: {fileID: 1973171033370095846, guid: 37333ae431d19e448b2393af7e3699f7, type: 3}
+  Bullet: {fileID: 4331871298396226952, guid: 215ea95aebf4c1c439d8b3ae29bc063d, type: 3}
   GraphicMouseOnWorld: {fileID: 522851356}
   ProjectileSpawner: {fileID: 102174024}
   MousePosit3D: {x: 0, y: 0, z: 0}

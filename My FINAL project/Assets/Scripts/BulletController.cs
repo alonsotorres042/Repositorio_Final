@@ -13,7 +13,7 @@ public class BulletController : MonoBehaviour
     }
     void Update()
     {
-        transform.position = transform.position + _velocity * Speed;
+        transform.position = transform.position + (_velocity * -1) * Speed;
     }
     private void OnCollisionEnter(Collision other)
     {
