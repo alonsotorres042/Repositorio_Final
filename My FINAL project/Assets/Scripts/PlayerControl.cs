@@ -7,9 +7,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
+    [Header ("Movement Settings")]
     public RaycastHit hit;
     private bool CanJump;
-    public float RaycastLenght = 0.47f;
+    private float RaycastLenght = 0.68f;
     public LayerMask Layer;
     public int MaxExtraJumps = 0;
     private int ExtraAvailableJumps = 0;
@@ -24,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     public float Depth;
 
 
+    [Header("Shooting Settings")]
     private Ray MyRay;
     private bool _canShot;
     private Vector3 MouseOnWorld;
@@ -32,10 +34,20 @@ public class PlayerControl : MonoBehaviour
     public GameObject Bullet;
     public GameObject GraphicMouseOnWorld;
     public Transform ProjectileSpawner;
-    
+
+    public bool _canShoot;
+    private bool _isShooting;
+    public int MaxAmmo;
+    private float BurstCADENCY;
+    [SerializeField] private int AvailableAmmo;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        BurstCADENCY = 0.1f;
+        _canShoot = true;
+        _isShooting = false;
         CanJump = true;
         Thrust = 300f;
         _counter = 0;
@@ -53,6 +65,7 @@ public class PlayerControl : MonoBehaviour
 
         _transform.position = new Vector3(x, _transform.position.y, z);
         _transform.LookAt(VisionTarget);
+
     }
     void FixedUpdate()
     {
@@ -78,12 +91,20 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
-    public void OnCollisionEnter(Collision other)
+    IEnumerator BurstShots()
     {
-        if (other.gameObject.name == "Sight")
+        _canShoot = false;
+        _isShooting = true;
+        if (_isShooting == true)
         {
-            Debug.Log("FRIENDLY FIRE!!!");
+            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
+            yield return new WaitForSeconds(BurstCADENCY);
+            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
+            yield return new WaitForSeconds(BurstCADENCY);
+            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
+            yield return new WaitForSeconds(BurstCADENCY + 0.2f);
         }
+        _canShoot = true;
     }
     public void OnCircularMovement(InputAction.CallbackContext context)
     {
@@ -103,7 +124,7 @@ public class PlayerControl : MonoBehaviour
         {   
             if (CanJump == true && ExtraAvailableJumps >= 0)
             {
-                _myRB.AddForce(_transform.up * Thrust);
+                _myRB.AddForce(_transform.up * Thrust * 1.5f); 
                 ExtraAvailableJumps--;
                 if (ExtraAvailableJumps == 0)
                 {
@@ -119,9 +140,14 @@ public class PlayerControl : MonoBehaviour
     }
     public void OnFire(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _canShoot == true && _isShooting == false)
         {
-            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
+            StartCoroutine(BurstShots());
+        }
+        else if(context.canceled)
+        {
+            _isShooting = false;
+            StopCoroutine(BurstShots());
         }
     }
 }

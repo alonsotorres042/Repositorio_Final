@@ -15,4 +15,8 @@ public class BulletController : MonoBehaviour
     {
         transform.position = transform.position + _velocity * Speed;
     }
+    public void OnCollisionEnter(Collision other)
+    {
+        Destroy(gameObject);
+    }
 }
