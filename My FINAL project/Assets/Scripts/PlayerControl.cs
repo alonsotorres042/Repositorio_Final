@@ -38,14 +38,15 @@ public class PlayerControl : MonoBehaviour
     public bool _canShoot;
     private bool _isShooting;
     public int MaxAmmo;
-    private float BurstCADENCY;
     [SerializeField] private int AvailableAmmo;
-
+    private float BurstCADENCY;
+    private float BurstTIME;
 
     // Start is called before the first frame update
     void Start()
     {
-        BurstCADENCY = 0.1f;
+        BurstTIME = 0.35f;
+        BurstCADENCY = 0.11f;
         _canShoot = true;
         _isShooting = false;
         CanJump = true;
@@ -65,7 +66,6 @@ public class PlayerControl : MonoBehaviour
 
         _transform.position = new Vector3(x, _transform.position.y, z);
         _transform.LookAt(VisionTarget);
-
     }
     void FixedUpdate()
     {
@@ -95,14 +95,15 @@ public class PlayerControl : MonoBehaviour
     {
         _canShoot = false;
         _isShooting = true;
-        if (_isShooting == true)
+
+        while (_isShooting == true)
         {
-            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
-            yield return new WaitForSeconds(BurstCADENCY);
-            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
-            yield return new WaitForSeconds(BurstCADENCY);
-            Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
-            yield return new WaitForSeconds(BurstCADENCY + 0.2f);
+            for (int i = 0; i < 3; ++i)
+            {
+                Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
+                yield return new WaitForSeconds(BurstCADENCY);
+            }
+            yield return new WaitForSeconds(BurstTIME);
         }
         _canShoot = true;
     }
@@ -147,7 +148,6 @@ public class PlayerControl : MonoBehaviour
         else if(context.canceled)
         {
             _isShooting = false;
-            StopCoroutine(BurstShots());
         }
     }
 }
