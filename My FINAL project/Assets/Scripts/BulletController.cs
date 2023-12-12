@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public GameData GameData;
     public float Speed;
-    private Vector3 _velocity;
-    public PlayerControl Player;
-    public Transform ViewTarget;
+    private Vector3 _direction;
     void Start()
     {
-        _velocity = Player.AimDirection.normalized * - 1;
-        transform.LookAt(ViewTarget);
+        //_direction = Player.AimDirection.normalized * - 1;
+        _direction = (transform.position - GameData.Sight.position) * -1;
+        _direction.Normalize();
+        transform.LookAt(GameData.Sight);
         if(gameObject.name != "TestBullet2")
         {
             Destroy(gameObject, 5);
@@ -19,7 +20,7 @@ public class BulletController : MonoBehaviour
     }
     void Update()
     {
-        transform.position = transform.position + _velocity * Speed;
+        transform.position = transform.position + _direction * Speed;
     }
     public void OnTriggerEnter(Collider other)
     {

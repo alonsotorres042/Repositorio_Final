@@ -26,6 +26,7 @@ public class PlayerControl : MonoBehaviour
 
 
     [Header("Shooting Settings")]
+    public GameData GameData;
     private Ray MyRay;
     private bool _canShot;
     private Vector3 MouseOnWorld;
@@ -90,6 +91,8 @@ public class PlayerControl : MonoBehaviour
                 CanJump = false;
             }
         }
+        GameData.Player = transform;
+        GameData.Sight = GraphicMouseOnWorld.transform;
     }
     IEnumerator BurstShots()
     {

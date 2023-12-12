@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject AttackZone;
+    public float Cadency;
+    public GameData GameData;
     public GameObject EnemyBullet;
-    public EnemyBulletController BulletControl;
-    public Transform Player;
     public Transform EnemyBulletSpawner;
     private IEnumerator corutineFunction;
 
     private void Awake()
     {
-        corutineFunction = ShootPlayer(1f);
+        corutineFunction = ShootPlayer(Cadency);
     }
     // Start is called before the first frame update
     void Start()
@@ -24,7 +23,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Player);
+        transform.LookAt(GameData.Player);
         if (Input.GetKeyDown(KeyCode.C))
         {
             StopCoroutine(corutineFunction);
