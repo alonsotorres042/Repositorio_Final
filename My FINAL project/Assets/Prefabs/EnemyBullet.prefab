@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameData: {fileID: 11400000, guid: 6b7e10f3f619c8d46b41e192c8934380, type: 2}
-  BulletSpeed: 0.01
+  BulletSpeed: 0.3
 --- !u!54 &-2853141530553866383
 Rigidbody:
   m_ObjectHideFlags: 0

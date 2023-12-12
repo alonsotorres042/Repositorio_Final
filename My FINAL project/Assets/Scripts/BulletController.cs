@@ -5,11 +5,10 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public GameData GameData;
-    public float Speed;
     private Vector3 _direction;
+    public float Speed;
     void Start()
     {
-        //_direction = Player.AimDirection.normalized * - 1;
         _direction = (transform.position - GameData.Sight.position) * -1;
         _direction.Normalize();
         transform.LookAt(GameData.Sight);

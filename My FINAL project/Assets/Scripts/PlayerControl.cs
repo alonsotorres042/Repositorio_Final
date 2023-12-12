@@ -67,6 +67,9 @@ public class PlayerControl : MonoBehaviour
 
         _transform.position = new Vector3(x, _transform.position.y, z);
         _transform.LookAt(VisionTarget);
+
+        GameData.Player = transform;
+        GameData.Sight = GraphicMouseOnWorld.transform;
     }
     void FixedUpdate()
     {
@@ -91,8 +94,6 @@ public class PlayerControl : MonoBehaviour
                 CanJump = false;
             }
         }
-        GameData.Player = transform;
-        GameData.Sight = GraphicMouseOnWorld.transform;
     }
     IEnumerator BurstShots()
     {
