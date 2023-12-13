@@ -122,7 +122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameData: {fileID: 11400000, guid: 6b7e10f3f619c8d46b41e192c8934380, type: 2}
-  BulletSpeed: 0.3
+  RaycastLenght: 0.9
+  Layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  BulletSpeed: 0.2
 --- !u!54 &-2853141530553866383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,7 +137,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

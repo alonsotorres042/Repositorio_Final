@@ -24,21 +24,22 @@ public class EnemyBulletController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, RaycastLenght, Layer))
+        if (Physics.Raycast(transform.position, _shotDirection, out hit, RaycastLenght, Layer))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.yellow);
+            if (hit.collider.name == "TestPlayer2D")
+            {
+                Debug.Log(hit.collider.name);
+                Destroy(gameObject);
+            }
+            Debug.DrawRay(transform.position, _shotDirection * RaycastLenght, Color.cyan);
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * RaycastLenght, Color.white);
+            Debug.DrawRay(transform.position, _shotDirection * RaycastLenght, Color.black);
         }
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "TestPlayer2D")
-        {
-            Debug.Log(other.gameObject.name);
-        }
         Destroy(gameObject);
     }
 }
