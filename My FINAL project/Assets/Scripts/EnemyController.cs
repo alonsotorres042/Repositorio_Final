@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(GameData.Player);
+        transform.LookAt(transform.position + (transform.position - GameData.Player.position).normalized);
         if (Input.GetKeyDown(KeyCode.C))
         {
             StopCoroutine(corutineFunction);
