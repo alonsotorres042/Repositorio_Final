@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,15 @@ public class EnemyController : MonoBehaviour
     public Transform EnemyBulletSpawner;
     private IEnumerator corutineFunction;
 
-    private void Awake()
+
+    public event Action GetDamage;
+
+    public void Awake()
     {
+        GameData.EnemySP = GetComponent<SpriteRenderer>();
+        GameData.Enemy = this;
         corutineFunction = ShootPlayer(Cadency);
+        GameData.CurrenEnemytLife = GameData.EnemyLife;
     }
     // Start is called before the first frame update
     void Start()
@@ -35,6 +42,13 @@ public class EnemyController : MonoBehaviour
         {
             Instantiate(EnemyBullet, EnemyBulletSpawner.position, Quaternion.identity);
             yield return new WaitForSeconds(Cadency);
+        }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            GetDamage?.Invoke();
         }
     }
 }

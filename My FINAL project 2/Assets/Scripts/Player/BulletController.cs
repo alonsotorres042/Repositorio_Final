@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -7,6 +9,7 @@ public class BulletController : MonoBehaviour
     public GameData GameData;
     private Vector3 _direction;
     public float Speed;
+    public int BulletDamage;
     void Start()
     {
         _direction = (transform.position - GameData.Sight.position) * -1;
@@ -17,15 +20,28 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject, 5);
         }   
     }
+    private void OnEnable()
+    {
+        GameData.Enemy.GetDamage += GetBulletDamage;
+    }
+    private void OnDisable()
+    {
+        GameData.Enemy.GetDamage -= GetBulletDamage;
+    }
     void Update()
     {
         transform.position = transform.position + _direction * Speed;
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Enemy")
+        if (other.gameObject.name != "TestPlayer2D")
         {
             Destroy(gameObject);
         }
+    }
+    public void GetBulletDamage()
+    {
+        GameData.CurrenEnemytLife -= BulletDamage;
+        GameData.EnemySP.color = Color.red;
     }
 }

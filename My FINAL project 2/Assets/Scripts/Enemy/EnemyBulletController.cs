@@ -28,7 +28,6 @@ public class EnemyBulletController : MonoBehaviour
         {
             if (hit.collider.name == "TestPlayer2D")
             {
-                Debug.Log(hit.collider.name);
                 Destroy(gameObject);
             }
             Debug.DrawRay(transform.position, _shotDirection * RaycastLenght, Color.cyan);
