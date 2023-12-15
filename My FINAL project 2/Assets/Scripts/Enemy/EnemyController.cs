@@ -32,17 +32,17 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         transform.LookAt(transform.position + (transform.position - GameData.Player.position).normalized);
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             StopCoroutine(corutineFunction);
         }
     }
     IEnumerator ShootPlayer(float Cadency)
     {
-        if (true)
+        while (true)
         {
-            Instantiate(EnemyBullet, EnemyBulletSpawner.position, Quaternion.identity);
             yield return new WaitForSeconds(Cadency);
+            Instantiate(EnemyBullet, EnemyBulletSpawner.position, Quaternion.identity);
         }
     }
     public void OnTriggerEnter(Collider other)

@@ -15,6 +15,7 @@ public class EnemyBulletController : MonoBehaviour
     {
         _shotDirection = (transform.position - GameData.Player.position) * -1;
         _shotDirection.Normalize();
+        transform.LookAt(GameData.Player);
     }
 
     // Update is called once per frame

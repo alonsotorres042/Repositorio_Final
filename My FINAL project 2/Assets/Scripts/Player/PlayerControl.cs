@@ -43,6 +43,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameData.Player = transform;
         BurstTIME = 0.35f;
         BurstCADENCY = 0.11f;
         _canShoot = true;

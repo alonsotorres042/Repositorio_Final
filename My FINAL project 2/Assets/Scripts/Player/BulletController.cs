@@ -7,6 +7,9 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public GameData GameData;
+    private RaycastHit hit;
+    public float RaycastLenght;
+    public LayerMask Layer;
     private Vector3 _direction;
     public float Speed;
     public int BulletDamage;
@@ -32,18 +35,26 @@ public class BulletController : MonoBehaviour
     {
         transform.position = transform.position + _direction * Speed;
     }
-    public void OnTriggerEnter(Collider other)
+    void FixedUpdate()
     {
-        if (other.gameObject.name != "TestPlayer2D")
+        if (Physics.Raycast(transform.position, _direction, out hit, RaycastLenght, Layer))
         {
-            other.GetComponent<SpriteRenderer>().color = GameData.Enemy.HurtColor;
-            Destroy(gameObject);
+            if (hit.collider.name == "Enemy" || hit.collider.GetComponent<EnemyPart>() == true)
+            {
+                hit.collider.GetComponent<SpriteRenderer>().color = GameData.Enemy.HurtColor;
+                Destroy(gameObject);
+            }
+            Debug.DrawRay(transform.position, _direction * RaycastLenght, Color.cyan);
+            Debug.Log("Enemy Impact");
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, _direction * RaycastLenght, Color.black);
         }
     }
     public void GetBulletDamage()
     {
         //SetLife
         GameData.CurrenEnemytLife -= BulletDamage;
-
     }
 }
