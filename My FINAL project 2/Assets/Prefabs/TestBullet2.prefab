@@ -120,4 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameData: {fileID: 11400000, guid: 6b7e10f3f619c8d46b41e192c8934380, type: 2}
   Speed: 0.35
-  BulletDamage: 10000
+  BulletDamage: 100

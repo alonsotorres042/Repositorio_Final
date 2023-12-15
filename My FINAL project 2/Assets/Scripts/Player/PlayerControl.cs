@@ -28,7 +28,6 @@ public class PlayerControl : MonoBehaviour
     [Header("Shooting Settings")]
     public GameData GameData;
     private Ray MyRay;
-    private bool _canShot;
     private Vector3 MouseOnWorld;
     private Vector3 _aimDirection;
     public Vector3 AimDirection{get{return _aimDirection;}private set{}} 
@@ -38,8 +37,6 @@ public class PlayerControl : MonoBehaviour
 
     public bool _canShoot;
     private bool _isShooting;
-    public int MaxAmmo;
-    [SerializeField] private int AvailableAmmo;
     private float BurstCADENCY;
     private float BurstTIME;
 

@@ -36,12 +36,14 @@ public class BulletController : MonoBehaviour
     {
         if (other.gameObject.name != "TestPlayer2D")
         {
+            other.GetComponent<SpriteRenderer>().color = GameData.Enemy.HurtColor;
             Destroy(gameObject);
         }
     }
     public void GetBulletDamage()
     {
+        //SetLife
         GameData.CurrenEnemytLife -= BulletDamage;
-        GameData.EnemySP.color = Color.red;
+
     }
 }

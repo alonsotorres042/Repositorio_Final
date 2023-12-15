@@ -10,13 +10,14 @@ public class EnemyController : MonoBehaviour
     public GameObject EnemyBullet;
     public Transform EnemyBulletSpawner;
     private IEnumerator corutineFunction;
-
+    public Color HurtColor;
 
     public event Action GetDamage;
+    public SpriteRenderer _spriteRenderer;
 
     public void Awake()
     {
-        GameData.EnemySP = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         GameData.Enemy = this;
         corutineFunction = ShootPlayer(Cadency);
         GameData.CurrenEnemytLife = GameData.EnemyLife;
@@ -38,7 +39,7 @@ public class EnemyController : MonoBehaviour
     }
     IEnumerator ShootPlayer(float Cadency)
     {
-        while (true)
+        if (true)
         {
             Instantiate(EnemyBullet, EnemyBulletSpawner.position, Quaternion.identity);
             yield return new WaitForSeconds(Cadency);

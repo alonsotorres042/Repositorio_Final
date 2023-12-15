@@ -10,7 +10,6 @@ public class GameData : ScriptableObject
     public Transform Sight;
 
     //ENEMY STUFF
-    public SpriteRenderer EnemySP;
     public EnemyController Enemy;
     public int EnemyLife = 10000;
     public int CurrenEnemytLife;
