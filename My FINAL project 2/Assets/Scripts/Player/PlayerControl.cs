@@ -54,6 +54,7 @@ public class PlayerControl : MonoBehaviour
         CircularSpeed = 0;
         _myRB = GetComponent<Rigidbody>();
         _transform = GetComponent<Transform>();
+        GameData.Sight = GraphicMouseOnWorld.transform;
     }
 
     // Update is called once per frame

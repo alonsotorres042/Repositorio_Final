@@ -40,6 +40,9 @@ public class EnemyBulletController : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if(other.name != "Enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }

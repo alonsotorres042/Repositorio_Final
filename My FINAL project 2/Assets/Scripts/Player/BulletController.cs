@@ -45,7 +45,6 @@ public class BulletController : MonoBehaviour
                 Destroy(gameObject);
             }
             Debug.DrawRay(transform.position, _direction * RaycastLenght, Color.cyan);
-            Debug.Log("Enemy Impact");
         }
         else
         {
