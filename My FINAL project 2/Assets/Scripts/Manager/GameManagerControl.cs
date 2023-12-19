@@ -25,9 +25,11 @@ public class GameManagerControl : MonoBehaviour
     void Victory()
     {
         gameData.Enemy.gameObject.SetActive(false);
+        gameData.Victory = true;
     }
     void Defeat()
     {
         gameData.Player.gameObject.SetActive(false);
+        gameData.Victory = false;
     }
 }
