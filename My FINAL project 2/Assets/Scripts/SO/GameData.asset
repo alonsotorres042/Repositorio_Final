@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   Sight: {fileID: 0}
-  Score: 800
-  Victory: 1
+  Score: 11000
+  Victory: 0
   Enemy: {fileID: 0}
   EnemyLife: 100
-  CurrenEnemyLife: 0
-  EnemyLifeBar: {fileID: 0}
+  CurrenEnemyLife: 100
   Player: {fileID: 0}
   PlayerLife: 100
-  CurrenPlayerLife: 100
+  CurrenPlayerLife: 0

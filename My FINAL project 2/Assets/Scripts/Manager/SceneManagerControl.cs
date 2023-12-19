@@ -17,6 +17,10 @@ public class SceneManagerControl : MonoBehaviour
     {
 
     }
+    public void Return()
+    {
+        SceneManager.LoadScene("Menu");
+    }
     public void Play()
     {
         SceneManager.LoadScene("Game");

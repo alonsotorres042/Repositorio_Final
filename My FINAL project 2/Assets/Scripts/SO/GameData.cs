@@ -20,4 +20,14 @@ public class GameData : ScriptableObject
     public PlayerControl Player;
     public float PlayerLife;
     public float CurrenPlayerLife;
+
+    //AUDIO ZONE
+    public AudioClip MenuTrack;
+    public AudioClip GameTrack;
+
+    public AudioClip PlayerShot;
+    public AudioClip PlayerHurt;
+
+    public AudioClip EnemyShot;
+    public AudioClip EnemyHurt;
 }
