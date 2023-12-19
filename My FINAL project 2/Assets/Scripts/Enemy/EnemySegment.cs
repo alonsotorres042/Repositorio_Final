@@ -24,4 +24,8 @@ public class EnemyPart : MonoBehaviour
             _spriteRenderer.color = Color.white;
         }
     }
+    void GetThisDamage()
+    {
+        gameData.CurrenEnemyLife = gameData.CurrenEnemyLife - gameData.Player.Bullet.GetComponent<BulletController>().BulletDamage;
+    }
 }

@@ -39,11 +39,12 @@ public class PlayerControl : MonoBehaviour
     private bool _isShooting;
     private float BurstCADENCY;
     private float BurstTIME;
+    private SpriteRenderer _mySR;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameData.Player = transform;
+        GameData.Player = this;
         BurstTIME = 0.35f;
         BurstCADENCY = 0.11f;
         _canShoot = true;
@@ -54,7 +55,9 @@ public class PlayerControl : MonoBehaviour
         CircularSpeed = 0;
         _myRB = GetComponent<Rigidbody>();
         _transform = GetComponent<Transform>();
+        _mySR = GetComponent<SpriteRenderer>();
         GameData.Sight = GraphicMouseOnWorld.transform;
+        GameData.CurrenPlayerLife = GameData.PlayerLife;
     }
 
     // Update is called once per frame
@@ -91,15 +94,19 @@ public class PlayerControl : MonoBehaviour
                 CanJump = false;
             }
         }
-        GameData.Player = transform;
+
+        _mySR.color = Color.white;
+        GameData.Player = this;
         GameData.Sight = GraphicMouseOnWorld.transform;
     }
+
+
     IEnumerator BurstShots()
     {
         _canShoot = false;
         _isShooting = true;
 
-        while (_isShooting == true)
+        if (_isShooting == true)
         {
             for (int i = 0; i < 3; ++i)
             {
@@ -152,5 +159,9 @@ public class PlayerControl : MonoBehaviour
         {
             _isShooting = false;
         }
+    }
+    public void OnPause(InputAction.CallbackContext context)
+    {
+
     }
 }

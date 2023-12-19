@@ -10,12 +10,13 @@ public class EnemyBulletController : MonoBehaviour
     public LayerMask Layer;
     private Vector3 _shotDirection;
     public float BulletSpeed;
+    public float BulletDamage;
     // Start is called before the first frame update
     void Start()
     {
-        _shotDirection = (transform.position - GameData.Player.position) * -1;
+        _shotDirection = (transform.position - GameData.Player.transform.position) * -1;
         _shotDirection.Normalize();
-        transform.LookAt(GameData.Player);
+        transform.LookAt(GameData.Player.transform);
     }
 
     // Update is called once per frame
@@ -27,15 +28,21 @@ public class EnemyBulletController : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, _shotDirection, out hit, RaycastLenght, Layer))
         {
-            if (hit.collider.name == "TestPlayer2D")
+            if (hit.collider.GetComponent<PlayerControl>() == true)
             {
-                Destroy(gameObject);
+                GameData.CurrenPlayerLife = GameData.CurrenPlayerLife - BulletDamage;
+                hit.collider.GetComponent<SpriteRenderer>().color = GameData.Enemy.HurtColor;
             }
+            Destroy(gameObject);
             Debug.DrawRay(transform.position, _shotDirection * RaycastLenght, Color.cyan);
         }
         else
         {
             Debug.DrawRay(transform.position, _shotDirection * RaycastLenght, Color.black);
+        }
+        if(GameData.CurrenEnemyLife < GameData.EnemyLife / 3)
+        {
+            BulletSpeed = BulletSpeed + 0.1f;
         }
     }
     public void OnTriggerEnter(Collider other)

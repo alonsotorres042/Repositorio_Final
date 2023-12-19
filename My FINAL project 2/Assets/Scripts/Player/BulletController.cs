@@ -23,14 +23,6 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject, 5);
         }   
     }
-    private void OnEnable()
-    {
-        GameData.Enemy.GetDamage += GetBulletDamage;
-    }
-    private void OnDisable()
-    {
-        GameData.Enemy.GetDamage -= GetBulletDamage;
-    }
     void Update()
     {
         transform.position = transform.position + _direction * Speed;
@@ -41,19 +33,16 @@ public class BulletController : MonoBehaviour
         {
             if (hit.collider.name == "Enemy" || hit.collider.GetComponent<EnemyPart>() == true)
             {
+                GameData.Score = GameData.Score + 100;
+                GameData.CurrenEnemyLife = GameData.CurrenEnemyLife - BulletDamage;
                 hit.collider.GetComponent<SpriteRenderer>().color = GameData.Enemy.HurtColor;
-                Destroy(gameObject);
             }
+            Destroy(gameObject);
             Debug.DrawRay(transform.position, _direction * RaycastLenght, Color.cyan);
         }
         else
         {
             Debug.DrawRay(transform.position, _direction * RaycastLenght, Color.black);
         }
-    }
-    public void GetBulletDamage()
-    {
-        //SetLife
-        GameData.CurrenEnemytLife -= BulletDamage;
     }
 }

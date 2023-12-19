@@ -12,7 +12,6 @@ public class EnemyController : MonoBehaviour
     private IEnumerator corutineFunction;
     public Color HurtColor;
 
-    public event Action GetDamage;
     public SpriteRenderer _spriteRenderer;
 
     public void Awake()
@@ -20,7 +19,7 @@ public class EnemyController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         GameData.Enemy = this;
         corutineFunction = ShootPlayer(Cadency);
-        GameData.CurrenEnemytLife = GameData.EnemyLife;
+        GameData.CurrenEnemyLife = GameData.EnemyLife;
     }
     // Start is called before the first frame update
     void Start()
@@ -31,7 +30,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(transform.position + (transform.position - GameData.Player.position).normalized);
+        transform.LookAt(transform.position + (transform.position - GameData.Player.transform.position).normalized);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             StopCoroutine(corutineFunction);
@@ -41,15 +40,17 @@ public class EnemyController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Cadency);
+            if (GameData.CurrenEnemyLife < (GameData.EnemyLife / 3) * 2 && GameData.CurrenEnemyLife > GameData.EnemyLife / 3)
+            {
+                yield return new WaitForSeconds(Cadency/2);
+            }else if(GameData.CurrenEnemyLife < GameData.EnemyLife / 3)
+            {
+                yield return new WaitForSeconds(Cadency / 3);
+            }else
+            {
+                yield return new WaitForSeconds(Cadency);
+            }
             Instantiate(EnemyBullet, EnemyBulletSpawner.position, Quaternion.identity);
-        }
-    }
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            GetDamage?.Invoke();
         }
     }
 }

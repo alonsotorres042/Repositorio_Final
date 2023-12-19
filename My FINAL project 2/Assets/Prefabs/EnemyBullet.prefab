@@ -127,6 +127,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   BulletSpeed: 0.2
+  BulletDamage: 25
 --- !u!54 &-2853141530553866383
 Rigidbody:
   m_ObjectHideFlags: 0
