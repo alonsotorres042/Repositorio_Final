@@ -30,6 +30,7 @@ public class EnemyBulletController : MonoBehaviour
         {
             if (hit.collider.GetComponent<PlayerControl>() == true)
             {
+                GameData.audioManager.PlayerHurt();
                 GameData.CurrenPlayerLife = GameData.CurrenPlayerLife - BulletDamage;
                 hit.collider.GetComponent<SpriteRenderer>().color = GameData.Enemy.HurtColor;
             }

@@ -10,6 +10,7 @@ public class GameData : ScriptableObject
     public Transform Sight;
     public float Score = 0;
     public bool Victory = false;
+    public AudioManager audioManager;
 
     //ENEMY STUFF
     public EnemyController Enemy;
@@ -22,12 +23,8 @@ public class GameData : ScriptableObject
     public float CurrenPlayerLife;
 
     //AUDIO ZONE
-    public AudioClip MenuTrack;
-    public AudioClip GameTrack;
-
-    public AudioClip PlayerShot;
-    public AudioClip PlayerHurt;
-
-    public AudioClip EnemyShot;
-    public AudioClip EnemyHurt;
+    public AudioClip[] GameAudio;
+    public float MasterVolume;
+    public float MusicVolume;
+    public float SFXVolume;
 }

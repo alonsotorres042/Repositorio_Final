@@ -11,6 +11,7 @@ public class UIManagerControl : MonoBehaviour
     public Image DefeatScreen;
     public Button RetunrMenu;
     public IEnumerator SlideAction;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour
     {
         GameData.Player = this;
         BurstTIME = 0.35f;
-        BurstCADENCY = 0.11f;
+        BurstCADENCY = 0.12f;
         _canShoot = true;
         _isShooting = false;
         CanJump = true;
@@ -110,6 +110,7 @@ public class PlayerControl : MonoBehaviour
         {
             for (int i = 0; i < 3; ++i)
             {
+                GameData.audioManager.PlayerShot();
                 Instantiate(Bullet, ProjectileSpawner.position, Quaternion.identity);
                 yield return new WaitForSeconds(BurstCADENCY);
             }

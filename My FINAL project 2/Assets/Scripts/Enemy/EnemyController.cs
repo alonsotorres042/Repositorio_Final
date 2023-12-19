@@ -50,6 +50,7 @@ public class EnemyController : MonoBehaviour
             {
                 yield return new WaitForSeconds(Cadency);
             }
+            GameData.audioManager.EnemyShot();
             Instantiate(EnemyBullet, EnemyBulletSpawner.position, Quaternion.identity);
         }
     }

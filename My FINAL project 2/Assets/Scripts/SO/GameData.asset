@@ -13,11 +13,19 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   Sight: {fileID: 0}
-  Score: 11000
+  Score: 18300
   Victory: 0
+  audioManager: {fileID: 0}
   Enemy: {fileID: 0}
   EnemyLife: 100
-  CurrenEnemyLife: 100
+  CurrenEnemyLife: 80
   Player: {fileID: 0}
   PlayerLife: 100
   CurrenPlayerLife: 0
+  GameAudio:
+  - {fileID: 8300000, guid: 2de906159d2606e4c80c1e67fc2f555b, type: 3}
+  - {fileID: 8300000, guid: 6ee5e3de40721dc4f8713dfd0efa39d6, type: 3}
+  - {fileID: 8300000, guid: fbd294562315c724dbf8a4c57c1f0d40, type: 3}
+  - {fileID: 8300000, guid: 41e150367f1c30c42896921a65aa0301, type: 3}
+  - {fileID: 8300000, guid: bf42d6a4733517f45bee8ff2841425fa, type: 3}
+  PlayerShot: {fileID: 8300000, guid: 41e150367f1c30c42896921a65aa0301, type: 3}
